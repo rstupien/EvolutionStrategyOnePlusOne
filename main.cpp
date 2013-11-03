@@ -1,9 +1,14 @@
 #include <iostream>
-#include "algorithm.h"
 
+#include "StrategiaEwolucyjna.h"
+
+#include <chrono>
+#include <random>
 using namespace std;
 
-void main()
+int main()
 {
-	cout << "Punkty w których funkcją osiąga minimum to: "  << runAlgorithm();
+   StrategiaEwolucyjna str(5,5,-5,5,-5,5,1000);
+   str.start();
+
 }
