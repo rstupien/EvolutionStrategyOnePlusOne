@@ -6,6 +6,7 @@
 ZapisDoPliku::ZapisDoPliku(char* const nazwaPliku)
 {
      plik.open(nazwaPliku, ios::out);
+     plik << "x1 x2 f" << endl;
 }
 
 
