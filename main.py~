@@ -46,13 +46,13 @@ import numpy as np
 
 fig = plt.figure()
 ax = fig.gca(projection='3d')
-X = np.arange(-6, 6, .4)
-Y = np.arange(-6, 6, .4)
+X = np.arange(-5, 5, .5)
+Y = np.arange(-5, 5, .5)
 X, Y = np.meshgrid(X, Y)
 Z = np.sqrt( ((X + 2*Y - 7)*(X + 2*Y - 7) + (2*X + Y -5 )*(2*X + Y -5 )))
 #surf = ax.plot_surface(X, Y, R, rstride=1, cstride=1, cmap=cm.coolwarm, linewidth=0, antialiased=False)
 
-ax.plot_wireframe(X, Y, Z, rstride=2, cstride=2)
+ax.plot_wireframe(X, Y, Z, rstride=3, cstride=3)
 
 ax.set_zlim(0, 15)
 
