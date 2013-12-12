@@ -34,9 +34,11 @@ for i in range(liczbaIteracji):
 	if (i % K == 0):
 		sigma = zmienSigme(sigma, historiaSukcesow, C1, C2)
 	print chromosomRodzic.genX1, chromosomRodzic.genX2
-	genx.append(chromosomRodzic.genX1)
-	geny.append(chromosomRodzic.genX2)
-	genz.append(np.sqrt(((chromosomRodzic.genX1 + 2*chromosomRodzic.genX2 - 7)*(chromosomRodzic.genX1 + 2*chromosomRodzic.genX2 - 7) + (2*chromosomRodzic.genX1 + chromosomRodzic.genX2 -5 )*(2*chromosomRodzic.genX1 + chromosomRodzic.genX2 -5 ))))
+	x = chromosomRodzic.genX1
+	y = chromosomRodzic.genX2
+	genx.append(x)
+	geny.append(y)
+	genz.append(np.sqrt(((x + 2*y - 7)*(x + 2*y - 7) + (2*x+ y -5 )*(2*x + y -5 ))))
 
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import cm
@@ -50,7 +52,6 @@ X = np.arange(-6, 6, .4)
 Y = np.arange(-6, 6, .4)
 X, Y = np.meshgrid(X, Y)
 Z = np.sqrt( ((X + 2*Y - 7)*(X + 2*Y - 7) + (2*X + Y -5 )*(2*X + Y -5 )))
-#surf = ax.plot_surface(X, Y, R, rstride=1, cstride=1, cmap=cm.coolwarm, linewidth=0, antialiased=False)
 
 ax.plot_wireframe(X, Y, Z, rstride=2, cstride=2)
 
