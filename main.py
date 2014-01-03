@@ -19,7 +19,7 @@ xMin = -5
 xMax = 5
 yMin = -5
 yMax = 5
-liczbaIteracji = 926
+liczbaIteracji = 100
 
 chromosomRodzic = Chromosom(x,y)
 for i in range(K):
@@ -44,10 +44,12 @@ from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import cm
 from matplotlib.ticker import LinearLocator, FormatStrFormatter
 import matplotlib.pyplot as plt
+import matplotlib.animation as animation
 import numpy as np
 
 fig = plt.figure()
-ax = fig.gca(projection='3d')
+ax = fig.add_subplot(1, 2, 1, projection = '3d')
+
 X = np.arange(-6, 6, .4)
 Y = np.arange(-6, 6, .4)
 X, Y = np.meshgrid(X, Y)
@@ -59,7 +61,15 @@ ax.set_zlim(0, 15)
 
 ax.zaxis.set_major_locator(LinearLocator(10))
 ax.zaxis.set_major_formatter(FormatStrFormatter('%.02f'))
-ax.scatter(genx, geny, genz)
+ax2 = fig.add_subplot(1,2,2)
+
+def update_lines(num):
+    line = ax.scatter(genx[:num], geny[:num], genz[:num])
+    line = ax2.plot(genz[:num])
+    return line,
+
+line_ani = animation.FuncAnimation(fig, update_lines, 100,
+                                   interval = 150, blit=False)
 
 plt.show()
 
