@@ -1,7 +1,10 @@
+# -*- coding: utf-8 -*-
+
 from Chromosom import *
 from StrategiaEwolucyjna import *
 from pylab import *
 import Tkinter
+import tkMessageBox
 
 sigma = 1.0
 K = 4
@@ -165,6 +168,9 @@ class appGUIp(Tkinter.Tk):
             genx.append(x)
             geny.append(y)
             genz.append(np.sqrt(((x + 2*y - 7)*(x + 2*y - 7) + (2*x+ y -5 )*(2*x + y -5 ))))
+
+        komunikat = u"X optymalne = "+str(x)+u"\nY optymalne = "+str(y)+u"\nWartość funkcji = "+str(genz[-1])
+        tkMessageBox.showinfo(u"Wynik",komunikat)
 
     def wykres1ButtonClick(self):
         from mpl_toolkits.mplot3d import Axes3D
