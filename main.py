@@ -55,70 +55,36 @@ class appGUIp(Tkinter.Tk):
         self.KEntry.grid(column=2,row=1,sticky='EW')
         self.KValue.set(K)
 
-        xMinLabel = Tkinter.Label(self, text="xMin")
-        xMinLabel.grid(column=0,row=2)
-        self.xMinValue = Tkinter.StringVar()
-        self.xMinEntry = Tkinter.Entry(self,textvariable=self.xMinValue)
-        self.xMinEntry.grid(column=0,row=3,sticky='EW')
-        self.xMinValue.set(xMin)
-        
-        xMaxLabel = Tkinter.Label(self, text="xMax")
-        xMaxLabel.grid(column=1,row=2)
-        self.xMaxValue = Tkinter.StringVar()
-        self.xMaxEntry = Tkinter.Entry(self,textvariable=self.xMaxValue)
-        self.xMaxEntry.grid(column=1,row=3,sticky='EW')
-        self.xMaxValue.set(xMax)
-
         xLabel = Tkinter.Label(self, text="x")
-        xLabel.grid(column=2,row=2)
+        xLabel.grid(column=0,row=2)
         self.xValue = Tkinter.StringVar()
         self.xEntry = Tkinter.Entry(self,textvariable=self.xValue)
-        self.xEntry.grid(column=2,row=3,sticky='EW')
+        self.xEntry.grid(column=0,row=3,sticky='EW')
         self.xValue.set(x)
 
-        yMinLabel = Tkinter.Label(self, text="yMin")
-        yMinLabel.grid(column=0,row=4)
-        self.yMinValue = Tkinter.StringVar()
-        self.yMinEntry = Tkinter.Entry(self,textvariable=self.yMinValue)
-        self.yMinEntry.grid(column=0,row=5,sticky='EW')
-        self.yMinValue.set(yMin)
-
-        yMaxLabel = Tkinter.Label(self, text="yMax")
-        yMaxLabel.grid(column=1,row=4)
-        self.yMaxValue = Tkinter.StringVar()
-        self.yMaxEntry = Tkinter.Entry(self,textvariable=self.yMaxValue)
-        self.yMaxEntry.grid(column=1,row=5,sticky='EW')
-        self.yMaxValue.set(yMax)
-
         yLabel = Tkinter.Label(self, text="y")
-        yLabel.grid(column=2,row=4)
+        yLabel.grid(column=1,row=2)
         self.yValue = Tkinter.StringVar()
         self.yEntry = Tkinter.Entry(self,textvariable=self.yValue)
-        self.yEntry.grid(column=2,row=5,sticky='EW')
+        self.yEntry.grid(column=1,row=3,sticky='EW')
         self.yValue.set(y)
 
         liczbaIteracjiLabel = Tkinter.Label(self, text="liczbaIteracji")
-        liczbaIteracjiLabel.grid(column=0,row=6)
+        liczbaIteracjiLabel.grid(column=2,row=2)
         self.liczbaIteracjiValue = Tkinter.StringVar()
         self.liczbaIteracjiEntry = Tkinter.Entry(self,textvariable=self.liczbaIteracjiValue)
-        self.liczbaIteracjiEntry.grid(column=0,row=7,sticky='EW')
+        self.liczbaIteracjiEntry.grid(column=2,row=3,sticky='EW')
         self.liczbaIteracjiValue.set(liczbaIteracji)
 
 
         startButton = Tkinter.Button(self,text=u"Start", command=self.startButtonClick)
-        startButton.grid(column=1,row=8)
+        startButton.grid(column=0,row=4)
 
         Wykres1Button = Tkinter.Button(self,text=u"Wykres 1", command=self.wykres1ButtonClick)
-        Wykres1Button.grid(column=0,row=9)
+        Wykres1Button.grid(column=1,row=4)
 
         Wykres2Button = Tkinter.Button(self,text=u"Wykres 2")
-        Wykres2Button.grid(column=1,row=9)
-
-        Wykres3Button = Tkinter.Button(self,text=u"Wykres 3")
-        Wykres3Button.grid(column=2,row=9)
-
-        Wykres4Button = Tkinter.Button(self,text=u"Wykres 4")
-        Wykres4Button.grid(column=0,row=10)
+        Wykres2Button.grid(column=2,row=4)
 
         self.resizable(False,False)
 
@@ -126,11 +92,7 @@ class appGUIp(Tkinter.Tk):
         global C1
         global C2
         global K
-        global xMin
-        global xMax
         global x
-        global yMin
-        global yMax
         global y
         global liczbaIteracji
         global sigma
@@ -142,11 +104,7 @@ class appGUIp(Tkinter.Tk):
         C1 = float(self.C1Value.get())
         C2 = float(self.C2Value.get())
         K = int(self.KValue.get())
-        xMin = float(self.xMinValue.get())
-        xMax = float(self.xMaxValue.get())
         x = float(self.xValue.get())
-        yMin = float(self.yMinValue.get())
-        yMax = float(self.yMaxValue.get())
         y = float(self.yValue.get())
         liczbaIteracji = int(self.liczbaIteracjiValue.get())
 
@@ -201,7 +159,7 @@ class appGUIp(Tkinter.Tk):
             line = ax2.plot(genz[:num])
             return line,
 
-        line_ani = animation.FuncAnimation(fig, update_lines, 100,
+        line_ani = animation.FuncAnimation(fig, update_lines, liczbaIteracji,
                                            interval = 150, blit=False)
         plt.show()
 
